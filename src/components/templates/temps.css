@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --color-bg: #1D1F20;
+    --color-bg-2: #2B2D2F;
+    --color-main-blue: #4E598C;
+    --color-light-blue: #78b7cc;
+    --color-even-more-light-blue: #fff;
+    --color-green: #074d38;
+    --color-light-green: #78ccb2;
+    --color-light-brown: #a27444;
+
+    --font-heading: 'Montserrat', sans-serif;
+    --font-text: 'Jost', sans-serif;
+    
+    --font-size-large: 3rem;
+    --font-size-medium: 1rem;
+    --font-size-small: 0.875rem;
+
+}
+
+/* :root{
+  --color-bg: #e5e5e5;
+  --color-main-blue: #073b4c;
+  --color-light-blue: #78b7cc;
+  --color-even-more-light-blue: #edf2fb;
+  --color-green: #074d38;
+  --color-light-green: #78ccb2;
+  --color-light-brown: #a27444;
+
+  --font-heading: 'Montserrat', sans-serif;
+  --font-text: 'Jost', sans-serif;
+  
+  --font-size-large: 3rem;
+  --font-size-medium: 1rem;
+  --font-size-small: 0.875rem;
+
+} */
