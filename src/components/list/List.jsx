@@ -1,4 +1,3 @@
-// src/components/list/List.jsx
 import React, { useState } from 'react';
 import words from '../../data/words.json';
 import WordCard from '../wordCard/WordCard';

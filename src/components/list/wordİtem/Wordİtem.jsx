@@ -1,4 +1,3 @@
-// src/components/list/wordItem/WordItem.jsx
 import React from 'react';
 import EditButton from '../buttons/EditButton';
 import DelButton from '../buttons/DelButton';
