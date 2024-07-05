@@ -1,21 +1,16 @@
+// src/components/list/List.jsx
 import React, { useState } from 'react';
 import words from '../../data/words.json';
 import WordCard from '../wordCard/WordCard';
 import Modal from '../templates/Modal';
 import İnput from './İnput';
 import styles from './list.module.css';
-import EditButton from './EditButton';
-import DelButton from './DelButton';
+import WordItem from './wordİtem/Wordİtem';
 
 const List = () => {
   const [selectedWord, setSelectedWord] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editableWordId, setEditableWordId] = useState(null);
-
-  const handleWordClick = (word) => {
-    setSelectedWord(word);
-    setIsModalOpen(true);
-  };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -33,10 +28,6 @@ const List = () => {
     setEditableWordId(null);
   };
 
-  const handleInputClick = (event) => {
-    event.stopPropagation();
-  };
-
   return (
     <div className={styles.words}>
       <h2 className={styles.title}>Список слов</h2>
@@ -44,22 +35,23 @@ const List = () => {
 
       <div className={styles.list}>
         {words.map((word) => (
-          <div key={word.id} className={styles.wordBox} onClick={() => handleWordClick(word)}>
+          <div key={word.id} className={styles.wordBox}>
             {editableWordId === word.id ? (
               <>
-                <input type="text" defaultValue={word.english} onClick={handleInputClick}/>
-                <input type="text" defaultValue={word.transcription} onClick={handleInputClick} />
-                <input type="text" defaultValue={word.russian} onClick={handleInputClick} />
+                <input type="text" defaultValue={word.english} />
+                <input type="text" defaultValue={word.transcription} />
+                <input type="text" defaultValue={word.russian} />
                 <button onClick={(event) => handleSaveClick(word.id, event)}>Save</button>
               </>
             ) : (
-              <>
-                <p className={styles.word} onClick={() => handleWordClick(word)}>{word.english}</p> 
-                <p className={styles.word} onClick={() => handleWordClick(word)}>{word.transcription}</p> 
-                <p className={styles.word} onClick={() => handleWordClick(word)}>{word.russian}</p> 
-                <EditButton onClick={(event) => handleEditClick(word.id, event)} />
-                <DelButton />
-              </>
+              <WordItem 
+                word={word}
+                handleWordClick={(word) => {
+                  setSelectedWord(word);
+                  setIsModalOpen(true);
+                }}
+                handleEditClick={handleEditClick}
+              />
             )}
           </div>
         ))}
