@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import words from '../../data/words.json';
 import WordCard from '../wordCard/WordCard';
-import Modal from '../templates/Modal';
-import İnput from './İnput';
+import Modal from './modal/Modal';
+import İnput from './input/İnput';
 import styles from './list.module.css';
 import WordItem from './wordİtem/Wordİtem';
 
@@ -11,21 +11,6 @@ const List = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editableWordId, setEditableWordId] = useState(null);
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedWord(null);
-  };
-
-  const handleEditClick = (id, event) => {
-    event.stopPropagation();
-    setEditableWordId(id);
-    setIsModalOpen(false);
-  };
-
-  const handleSaveClick = (id, event) => {
-    event.stopPropagation();
-    setEditableWordId(null);
-  };
 
   return (
     <div className={styles.words}>
@@ -34,13 +19,13 @@ const List = () => {
 
       <div className={styles.list}>
         {words.map((word) => (
-          <div key={word.id} className={styles.wordBox}>
+          <div key={word.id}>
             {editableWordId === word.id ? (
               <>
                 <input type="text" defaultValue={word.english} />
                 <input type="text" defaultValue={word.transcription} />
                 <input type="text" defaultValue={word.russian} />
-                <button onClick={(event) => handleSaveClick(word.id, event)}>Save</button>
+                <button>Save</button>
               </>
             ) : (
               <WordItem 
@@ -49,15 +34,22 @@ const List = () => {
                   setSelectedWord(word);
                   setIsModalOpen(true);
                 }}
-                handleEditClick={handleEditClick}
               />
             )}
           </div>
         ))}
       </div>
 
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        {selectedWord && <WordCard word={selectedWord.english} translation={selectedWord.russian} transcription={selectedWord.transcription} />}
+      <Modal 
+      isOpen={isModalOpen} 
+      onClose={() => setIsModalOpen(false)} 
+      handleCloseModal={() => setSelectedWord(null)}>
+
+        {selectedWord && <WordCard 
+        word={selectedWord.english} 
+        translation={selectedWord.russian} 
+        transcription={selectedWord.transcription} />}
+        
       </Modal>
     </div>
   );

@@ -12,19 +12,18 @@
     z-index: 1000;
   }
   
-  .modalContent {
-    position: relative;
-    z-index: 1001;
-  }
+.modalContent {
+  position: relative;
+  z-index: 1001;
+}
   
-  .closeButton {
-    position: absolute;
-    top: 6px;
-    right: 7px;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    color: var(--color-main-blue);
-  }
-  
+.close {
+  position: absolute;
+  top: 6px;
+  right: 7px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--color-main-blue);
+}
