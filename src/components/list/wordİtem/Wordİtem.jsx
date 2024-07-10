@@ -1,10 +1,8 @@
-// WordItem.jsx
-
 import React, { useState } from 'react';
-import EditButton from '../buttons/EditButton';
-import DelButton from '../buttons/DelButton';
+import EditButton from '../Buttons/EditButton';
+import DelButton from '../Buttons/DelButton';
 import styles from '../list.module.css';
-import stylebtn from '../buttons/button.module.css'
+import stylebtn from '../Buttons/button.module.css';
 
 const WordItem = ({ word, handleWordClick }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -38,14 +36,14 @@ const WordItem = ({ word, handleWordClick }) => {
           <input type="text" name="english" value={editedWord.english} onChange={handleInputChange} />
           <input type="text" name="transcription" value={editedWord.transcription} onChange={handleInputChange} />
           <input type="text" name="russian" value={editedWord.russian} onChange={handleInputChange} />
-          <button className={stylebtn.wordButton}  onClick={handleSave}>Save</button>
-          <button className={stylebtn.wordButton}  onClick={handleCancel}>Cancel</button>
+          <button className={stylebtn.wordButton} onClick={handleSave}>Save</button>
+          <button className={stylebtn.wordButton} onClick={handleCancel}>Cancel</button>
         </>
       ) : (
         <>
-          <p className={styles.word}>{word.english}</p>
-          <p className={styles.word}>{word.transcription}</p>
-          <p className={styles.word}>{word.russian}</p>
+          <p className={styles.word} onClick={() => handleWordClick(word)}>{editedWord.english}</p>
+          <p className={styles.word} onClick={() => handleWordClick(word)}>{editedWord.transcription}</p>
+          <p className={styles.word} onClick={() => handleWordClick(word)}>{editedWord.russian}</p>
           <EditButton onEdit={handleEdit} />
           <DelButton />
         </>
