@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import EditButton from '../Buttons/EditButton';
 import DelButton from '../Buttons/DelButton';
 import styles from '../list.module.css';
@@ -7,6 +7,12 @@ import stylebtn from '../Buttons/button.module.css';
 const WordItem = ({ word, handleWordClick }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedWord, setEditedWord] = useState({ ...word });
+  const [initialWord, setInitialWord] = useState({ ...word });
+
+  useEffect(() => {
+    setInitialWord({ ...word });
+    setEditedWord({ ...word });
+  }, [word]);
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -14,7 +20,7 @@ const WordItem = ({ word, handleWordClick }) => {
 
   const handleCancel = () => {
     setIsEditing(false);
-    setEditedWord({ ...word });
+    setEditedWord(initialWord);
   };
 
   const handleInputChange = (e) => {
@@ -53,3 +59,4 @@ const WordItem = ({ word, handleWordClick }) => {
 };
 
 export default WordItem;
+

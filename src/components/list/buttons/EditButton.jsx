@@ -1,5 +1,3 @@
-// EditButton.jsx
-
 import React, { useState } from 'react';
 import styles from './button.module.css';
 
