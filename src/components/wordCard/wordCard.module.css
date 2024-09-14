@@ -36,3 +36,25 @@
     margin: 0;
   }
   
+  .carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .arrow {
+    background-color: var(--color-main-blue);
+    border: none;
+    color: var(--color-even-more-light-blue);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+  }
+  
+  .arrow:hover {
+    background-color: var(--color-light-blue);
+  }
+  
